@@ -198,13 +198,13 @@ void ReadMessage(TCHAR *msg, char *buffer, HWND &msgList)
 	}
 }
 
-void AddMsgToList(const TCHAR *msg, HWND &msgList)
+void AddMsgToList(const TCHAR *str, HWND &msgList)
 {
 	SYSTEMTIME t;
 	TCHAR notify[128];
 
 	GetLocalTime(&t);
-	_stprintf_s(notify, 127, _T("%02d : %02d : %02d - %s"), t.wHour, t.wMinute, t.wSecond, msg);
+	_stprintf_s(notify, 127, _T("%02d : %02d : %02d - %s"), t.wHour, t.wMinute, t.wSecond, str);
 	SendMessage(msgList, LB_ADDSTRING, 0, (LPARAM)notify);
 }
 

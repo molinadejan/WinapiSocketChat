@@ -191,8 +191,7 @@ int Win_Server_Close()
 SOCKET AcceptSocket(HWND hWnd, SOCKET s, SOCKADDR_IN & c_addr)
 {
 	SOCKET cs;
-	int size;
-	size = sizeof(c_addr);
+	int size = sizeof(c_addr);
 
 	cs = accept(s, (LPSOCKADDR)&c_addr, &size);
 
@@ -212,13 +211,13 @@ void SendMessageToClient(char *buffer)
 	}
 }
 
-void AddMsgToList(const TCHAR *msg, HWND &msgList)
+void AddMsgToList(const TCHAR *str, HWND &msgList)
 {
 	SYSTEMTIME t;
 	TCHAR notify[128];
 
 	GetLocalTime(&t);
-	_stprintf_s(notify, 127, _T("%02d : %02d : %02d - %s"), t.wHour, t.wMinute, t.wSecond, msg);
+	_stprintf_s(notify, 127, _T("%02d : %02d : %02d - %s"), t.wHour, t.wMinute, t.wSecond, str);
 	SendMessage(msgList, LB_ADDSTRING, 0, (LPARAM)notify);
 }
 
